@@ -44,6 +44,14 @@ export class LoginPage {
   }
     
     login(){
+        var alert = this.alertCtrl.create({
+            title: 'Lo Sentimos',
+            subTitle: 'Tuvimos un problema de ultimo momento con esta parte...\t El Login redirige directamente a la Página Principal',
+            buttons: ['0k']
+        });
+        alert.present();
+        this.goMain();
+        /*
         if(!this.validate(this.log)){
             var alert = this.alertCtrl.create({
                 title: 'Campos Vacios',
@@ -62,6 +70,7 @@ export class LoginPage {
             this.next(err);
         console.log(err);
         })
+        */
     }
 
     next(result: any):void{
