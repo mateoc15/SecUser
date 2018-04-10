@@ -20,6 +20,7 @@
 
 <ion-content padding>
   <ion-item *ngFor="let med of medicamentoModal">
+    <img src="{{med.fotourl}}"/>
     <h1>{{med.nombre}}</h1>
     <p>Laboratorio: {{med.laboratorio}}</p>
     <p>Unidades Disponibles: {{med.unidades_disponibles}}</p>
