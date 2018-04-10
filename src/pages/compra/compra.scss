@@ -1,0 +1,25 @@
+page-compra {
+  .card-background-page {
+
+ion-card {
+position: relative;
+text-align: center;
+}
+
+.card-title {
+position: top;
+font-weight: bold;
+text-align: center;
+color: #00001a;
+}
+
+.card-subtitle {
+font-size: 1.0em;
+position: absolute;
+top: 52%;
+width: 100%;
+color: #fff;
+}
+
+}
+}

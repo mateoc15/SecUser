@@ -1,0 +1,36 @@
+<!--
+  Generated template for the OlvidarContraseñaPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+      <ion-title>Olvidé Mi Contraseña</ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+  
+  
+  <ion-content >
+    <ion-card>
+        <ion-card-header>
+            Recuperar Contraseña
+        </ion-card-header>
+      <form action="/olvidarPass">
+        <ion-list no-lines>
+          <ion-item>
+            <ion-label floating>Ingresar correo</ion-label>
+            <ion-input type="email" id="correo" #email></ion-input>
+          </ion-item>
+          <ion-item>
+              <button ion-button  block round outline>
+                  Enviar Contraseña
+              </button>
+          </ion-item>
+        </ion-list>
+      </form>
+    </ion-card>
+  
+  </ion-content>

@@ -1,0 +1,85 @@
+<!--
+  Generated template for the CompraPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Compra de Medicamentos</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="card-background-page">
+<h1>Medicamentos por categoría</h1>
+<ion-grid>
+  <ion-row>
+    <ion-col col-md-4>
+      <ion-card (click)="listarMedicamentosCategoria('Niños')">
+            <img src="https://images.ua.prom.st/765180291_w320_h450_baby_idea_icon.png"/>
+            <ion-item>
+              <div class="card-title">Niños</div>
+              <div class="card-subtitle"></div>
+            </ion-item>
+      </ion-card>
+    </ion-col>
+    <ion-col col-md-4>
+      <ion-card (click)="listarMedicamentosCategoria('Mamás')">
+            <img src="http://static1.squarespace.com/static/58a9f1539f74561f4dbf2ffc/59b94ca5f5e231275f70e3d3/59b97dd6e03f38cd8184bf6b/1505340110458/infertility_pregnancy_child_birth.png?format=1000w"/>
+            <ion-item>
+              <div class="card-title">Mamás</div>
+              <div class="card-subtitle"></div>
+            </ion-item>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col col-md-4>
+      <ion-card (click)="listarMedicamentosCategoria('Adultos')">
+            <img src="http://www.chirp.net.nz/assets/Uploads/_resampled/resizedimage421354-ChirpPeople10.png"/>
+            <ion-item>
+              <div class="card-title">Adultos</div>
+              <div class="card-subtitle"></div>
+            </ion-item>
+      </ion-card>
+    </ion-col>
+    <ion-col col-md-4>
+      <ion-card (click)="listarMedicamentosCategoria('Pomadas')">
+            <img src="http://halibut.es/wp-content/themes/Halibut/img/product-pomada-central.png"/>
+            <ion-item>
+              <div class="card-title">Pomadas</div>
+              <div class="card-subtitle"></div>
+            </ion-item>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col col-md-4>
+      <ion-card (click)="listarMedicamentosCategoria('Pastillas')">
+            <img src="https://image.flaticon.com/icons/png/512/387/387558.png"/>
+            <ion-item>
+              <div class="card-title">Pastillas</div>
+              <div class="card-subtitle">Medicamentos para niños de 4 a 15 años</div>
+            </ion-item>
+      </ion-card>
+    </ion-col>
+    <ion-col col-md-4>
+      <ion-card (click)="listarMedicamentosCategoria('Jarabes')">
+            <img src="data:image/png;base64,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"/>
+            <ion-item>
+              <div class="card-title">Jarabes</div>
+              <div class="card-subtitle">Medicamentos para niños de 4 a 15 años</div>
+            </ion-item>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+</ion-content>
