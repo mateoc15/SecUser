@@ -22,8 +22,9 @@ import 'rxjs/add/operator/map';
   templateUrl: 'lista-medicamentos.html',
 })
 export class ListaMedicamentosPage {
+
 medicamentos: Object;
-//medicamentos: any[] = [];
+
   constructor(public navCtrl: NavController, public modalCtrl : ModalController, public navParams: NavParams, public userServiceProvider: UserServiceProvider ) {
   }
 

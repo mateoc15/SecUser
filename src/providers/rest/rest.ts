@@ -15,13 +15,13 @@ export class RestProvider {
   }
 
   apiUrl = 'http://api-rest-sec.herokuapp.com';
-  apiUrlLogin = 'http://api-rest-sec.herokuapp.com/e/login';
-  apiUrlChangePass= 'http://api-rest-sec.herokuapp.com/e/put/login';
-  apiUrlRegistrar = 'http://api-rest-sec.herokuapp.com/u/signup';
-  apiUrlRegistrarAdmin = 'http://api-rest-sec.herokuapp.com/e/administrador';
 
-  apiUrlRegistrarRepartidor ='http://api-rest-sec.herokuapp.com/e/repartidor';
-  apiUrlLoginEmpleado= 'http://api-rest-sec.herokuapp.com/e/login';
+  //------Usuarios
+  apiUrlLogin = 'http://api-rest-sec.herokuapp.com/u/login';
+  apiUrlChangePass= 'http://api-rest-sec.herokuapp.com/u/put/login';
+  apiUrlRegistrar = 'http://api-rest-sec.herokuapp.com/u/signup';
+
+  //------Medicamentos
   apiUrlGetMedicamentos = 'http://api-rest-sec.herokuapp.com/m/medicamentos';
   apiUrlGetMedicamentoCategoria = 'http://api-rest-sec.herokuapp.com/m/medicamentos/:categoria';
   apiUrlPostMedicamento= 'http://api-rest-sec.herokuapp.com/m/medicamentos';
@@ -52,8 +52,9 @@ export class RestProvider {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     return new Promise((resolve, reject) => {
-      this.http.post(this.apiUrlLoginEmpleado, data)
+      this.http.post(this.apiUrlLogin, data)
         .subscribe(res => {
+          console.log(data);
           resolve(res);
         }, (err) => {
           reject(err);
@@ -74,12 +75,12 @@ export class RestProvider {
     });
   }
 
-  addAdmin(data){
+  register(data){
+    console.log(data);
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    console.log(data);
     return new Promise((resolve, reject) => {
-      this.http.post(this.apiUrlRegistrarAdmin, data)
+      this.http.post(this.apiUrlRegistrar, data)
         .subscribe(res => {
           resolve(res);
         }, (err) => {
@@ -88,18 +89,6 @@ export class RestProvider {
     });
   }
 
-  addRepartidor(data){
-    let headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    return new Promise((resolve, reject) => {
-      this.http.post(this.apiUrlRegistrarRepartidor, data)
-        .subscribe(res => {
-          resolve(res);
-        }, (err) => {
-          reject(err);
-        });
-    });
-  }
 
 
 
