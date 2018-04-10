@@ -27,14 +27,7 @@
 
             <ion-list no-lines>
                 <form (ngSubmit)="login()">
-                    <ion-item>
-                        <ion-label>Tipo Empleado</ion-label>
-                        <ion-select [(ngModel)]="log.tipo" 
-                                    name='tipo'>
-                            <ion-option value="administrador">Adminitrador</ion-option>
-                            <ion-option value="repartidor">Repartidor</ion-option>
-                        </ion-select>
-                    </ion-item>
+                    
                     <ion-item>
                         <ion-label floating>
                             Ingrese Su Correo
@@ -61,6 +54,7 @@
                             Ingresar
                         </button>
                     </ion-item>
+                </form>
 
                     <ion-item>
                         <button ion-button 
@@ -71,7 +65,17 @@
                             Olvidé la contraseña
                         </button>
                     </ion-item>
-                </form>
+
+                    <ion-item>
+                        <button ion-button 
+                                block 
+                                round 
+                                outline 
+                                (click)="goRegistro()">
+                            Registrarse
+                        </button>
+                    </ion-item>
+                
             </ion-list>
 
         </ion-card-content>
