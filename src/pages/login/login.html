@@ -35,7 +35,8 @@
                         <ion-input type="email" 
                                     name="correo" 
                                     [(ngModel)]="log.correo" 
-                                    #username></ion-input>
+                                    #username
+                                    required></ion-input>
                     </ion-item>
                     <ion-item>
                         <ion-label floating>
@@ -44,7 +45,8 @@
                         <ion-input type="password" 
                                     [(ngModel)]="log.contrasena" 
                                     name="contrasena" 
-                                    #password></ion-input>
+                                    #password
+                                    required></ion-input>
                     </ion-item>
                     <ion-item>
                         <button type="submit"

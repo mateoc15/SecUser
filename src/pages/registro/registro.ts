@@ -16,8 +16,8 @@ import { RestProvider } from '../../providers/rest/rest';
 })
 export class RegistroPage {
 
-  private cliente = {
-    id_cliente: '',
+  private usuario = {
+    id_usuario: '',
     id_tipo_documento: '',
     correo: '',
     nombre: '',
@@ -38,8 +38,8 @@ console.log('ionViewDidLoad RegistroPage');
 
 register(){
 
-    this.cliente = this.completeDefault();
-    if(!this.validateComplete(this.cliente)){
+    this.usuario = this.completeDefault();
+    if(!this.validateComplete(this.usuario)){
       var alert = this.alertCtrl.create({
         title: 'Campos Vacios',
         subTitle: 'Por Favor LLenar Los Campos Faltantes',
@@ -48,7 +48,7 @@ register(){
       alert.present();
       return;
     }
-    this.restProvider.register(this.cliente).then((result) => {
+    this.restProvider.register(this.usuario).then((result) => {
         
       this.todoOk();
       console.log(result);
@@ -62,14 +62,14 @@ register(){
 
 
   completeDefault(): any{
-    var repartidorSend = this.cliente;
-    if(this.cliente.fecha_de_nacimiento==''){
+    var repartidorSend = this.usuario;
+    if(this.usuario.fecha_de_nacimiento==''){
       repartidorSend.fecha_de_nacimiento='0001-01-01';
     }
-    if(this.cliente.nombre==''){
+    if(this.usuario.nombre==''){
       repartidorSend.nombre='Default';
     }
-    if(this.cliente.genero==''){
+    if(this.usuario.genero==''){
       repartidorSend.genero='Default';
     }
     return repartidorSend;
@@ -106,8 +106,8 @@ register(){
 }
 
 todoOk(){
-    this.cliente = {
-      id_cliente: '',
+    this.usuario = {
+      id_usuario: '',
       id_tipo_documento: '',
       correo: '',
       nombre: '',

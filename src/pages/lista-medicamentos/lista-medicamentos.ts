@@ -22,8 +22,8 @@ import 'rxjs/add/operator/map';
   templateUrl: 'lista-medicamentos.html',
 })
 export class ListaMedicamentosPage {
-  medicamentos: Observable<any[]>;
-  //medicamentos: any[] = [];
+  //medicamentos: Observable<any[]>;
+  medicamentos: any[] = [];
   constructor(public navCtrl: NavController, public modalCtrl : ModalController, public navParams: NavParams, public userServiceProvider: UserServiceProvider ) {
   }
 
