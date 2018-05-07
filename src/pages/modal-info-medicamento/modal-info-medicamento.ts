@@ -17,7 +17,7 @@ import { Observable } from 'rxjs/Observable';
   templateUrl: 'modal-info-medicamento.html',
 })
 export class ModalInfoMedicamentoPage {
-  public medicamentoModal: Observable<any[]>;
+  public medicamentoModal: Object;
     //public medicamentoModal: any[] = [];
 
 
