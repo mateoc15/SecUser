@@ -23,6 +23,7 @@ import 'rxjs/add/operator/map';
 })
 export class ListaMedicamentosPage {
 
+
 medicamentos: Object;
 medicamentosCat: Object;
 estado: Object;
