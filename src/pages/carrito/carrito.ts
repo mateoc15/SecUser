@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { CompraPage } from '../compra/compra';
 import { Observable } from 'rxjs/Observable';
 import { UserServiceProvider } from '../../providers/user-service/user-service';
+import { PagoPage } from '../pago/pago';
 
 /**
  * Generated class for the CarritoPage page.
@@ -24,7 +25,6 @@ export class CarritoPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public userServiceProvider: UserServiceProvider) {
     this.carrito = JSON.parse(window.localStorage.getItem("carrito"));
-    alert(JSON.stringify(this.carrito));
     this.totalCompra = 0;
   }
 
@@ -67,6 +67,7 @@ export class CarritoPage {
         }, (err) => {
           console.log(err);
         });
+        this.navCtrl.push(PagoPage);
   }
 
 }

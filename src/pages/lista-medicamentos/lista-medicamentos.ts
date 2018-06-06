@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component, ViewChild, ElementRef } from '@angular/core';
+import { IonicPage, NavController, NavParams, Toast, ToastController } from 'ionic-angular';
 import { Observable } from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
 import { Http } from '@angular/http';
@@ -24,12 +24,55 @@ import 'rxjs/add/operator/map';
 export class ListaMedicamentosPage {
 
 medicamentos: Object;
+medicamentosCat: Object;
+estado: Object;
+@ViewChild('busquedaMedicamento', {read: ElementRef}) busquedaMedicamentoRef: ElementRef;
+busquedaMedicamentoElement: HTMLInputElement=null;
 
   constructor(public navCtrl: NavController, public modalCtrl : ModalController, public navParams: NavParams, public userServiceProvider: UserServiceProvider ) {
+  this.estado=this.navParams.get('param1');
   }
 
   ionViewDidLoad(){
-      this.userServiceProvider.getMedicamentos(this.navParams.data)
+    if(this.estado!="false"){
+      this.userServiceProvider.getMedicamentos(this.navParams.get('param1'))
+      .subscribe(
+        (data) => { // Success
+          this.medicamentos = data;
+          this.medicamentosCat  = data;
+        },
+        (error) =>{
+          console.error(error);
+        }
+      )
+    }else{
+      console.log(this.navParams.get('param2')+'dd');
+      this.userServiceProvider.getMedicamentoNombre(this.navParams.get('param2'))
+      .subscribe(
+        (data) => { // Success
+          console.log(data+'dd');
+          this.medicamentos = data;
+        },
+        (error) =>{
+          console.error(error);
+        }
+      )
+      
+    }
+      
+    }
+
+    public showInfo(medicamentoId: string){
+
+      var choice = medicamentoId;
+      var modalPage = this.modalCtrl.create('ModalInfoMedicamentoPage', {choice}); modalPage.present();
+    }
+
+    public onInputt(text: any){
+      this.busquedaMedicamentoElement =this.busquedaMedicamentoRef.nativeElement.querySelector('.searchbar-input');
+      console.log(JSON.stringify(this.busquedaMedicamentoElement.value));
+      if(this.busquedaMedicamentoElement.value != ""){
+        this.userServiceProvider.getMedicamentoNombreCat(this.busquedaMedicamentoElement.value,this.navParams.get('param1'))
       .subscribe(
         (data) => { // Success
           this.medicamentos = data;
@@ -38,12 +81,14 @@ medicamentos: Object;
           console.error(error);
         }
       )
+      }else{
+        
+      }
     }
 
-    public showInfo(medicamentoId: string){
-
-      var choice = medicamentoId;
-      var modalPage = this.modalCtrl.create('ModalInfoMedicamentoPage', {choice}); modalPage.present();
+    public onCancelSearch(text: any){
+      this.medicamentos = this.medicamentosCat;
+      console.log('hol');
     }
 
     removeProduct(medicamento) {

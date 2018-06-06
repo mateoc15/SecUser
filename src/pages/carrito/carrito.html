@@ -6,46 +6,46 @@
 -->
 <ion-header>
 
-<ion-navbar>
-    <button ion-button menuToggle>
+    <ion-navbar>
+        <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Carrito de compras</ion-title>
-  </ion-navbar>
+        <ion-title>Carrito de compras</ion-title>
+    </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  <ion-list>
-    <ion-card *ngFor="let medicamento of carrito">
-      <ion-row *ngIf="medicamento.cantidad > 0">
-        <ion-col width-67>
-          <ion-label ion-select (click)="showInfo(medicamento.id)">{{ medicamento.nombre }}</ion-label>
-        </ion-col>
-        <ion-col>
-          <button ion-button color="primary" (click)="removeProduct(medicamento)">
+    <ion-list>
+        <ion-card *ngFor="let medicamento of carrito">
+            <ion-row *ngIf="medicamento.cantidad > 0">
+                <ion-col width-67>
+                    <ion-label ion-select (click)="showInfo(medicamento.id)">{{ medicamento.nombre }}</ion-label>
+                </ion-col>
+                <ion-col>
+                    <button ion-button color="primary" (click)="removeProduct(medicamento)">
               <ion-icon name="remove"></ion-icon>
             </button>
-        </ion-col>
-        <ion-col width-5>
-          <ion-label>{{ medicamento.cantidad }}</ion-label>
-        </ion-col>
-        <ion-col>
-          <button ion-button color="primary" *ngIf="medicamento.unidades_disponibles >medicamento.cantidad" (click)="addProduct(medicamento)">
+                </ion-col>
+                <ion-col width-5>
+                    <ion-label>{{ medicamento.cantidad }}</ion-label>
+                </ion-col>
+                <ion-col>
+                    <button ion-button color="primary" *ngIf="medicamento.unidades_disponibles >medicamento.cantidad" (click)="addProduct(medicamento)">
                 <ion-icon name="add"></ion-icon>
           </button>
-        </ion-col>
-        <ion-label>{{ medicamento.cantidad * medicamento.precio_unidad }}$</ion-label>
-        <button ion-button color="danger" (click)="removeAllProduct(medicamento)">
+                </ion-col>
+                <ion-label>{{ medicamento.cantidad * medicamento.precio_unidad }}$</ion-label>
+                <button ion-button color="danger" (click)="removeAllProduct(medicamento)">
               <ion-icon name="trash"></ion-icon>
         </button>
-      </ion-row>
-    </ion-card>
-  </ion-list>
+            </ion-row>
+        </ion-card>
+    </ion-list>
 
-  <h1> Total a pagar: {{totalCompra}}$</h1>
-  <button ion-button block color="primary" (click)="finalizarCompra()">
-        Finalizar compra
+    <h1> Total a pagar: {{totalCompra}}$</h1>
+    <button ion-button block color="primary" (click)="finalizarCompra()">
+        Pagar
   </button>
 </ion-content>

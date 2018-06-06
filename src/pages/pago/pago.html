@@ -1,0 +1,38 @@
+<!--
+  Generated template for the PagoPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>pago</ion-title>
+    </ion-navbar>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</ion-header>
+
+
+<ion-content padding>
+
+    <ion-list>
+        <ion-item>
+            <ion-icon name="home" item-start></ion-icon>
+            <ion-label stacked>Dirección de envio:</ion-label>
+            <ion-input [(ngModel)]="pago.nomenclatura" name="direccionEnvio" type="text" placeholder="Ej: cll 87 #45-12"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-icon name="card" item-start></ion-icon>
+            <ion-label stacked>Tarjeta de crédito N°:</ion-label>
+            <ion-input name="numberCreditCard" type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-icon name="key" item-start></ion-icon>
+            <ion-label stacked>Código de seguridad:</ion-label>
+            <ion-input name="csvCard" type="text"></ion-input>
+        </ion-item>
+    </ion-list>
+    <div padding>
+        <button ion-button block type="submit" (click)="pagar()">Guardar</button>
+    </div>
+</ion-content>

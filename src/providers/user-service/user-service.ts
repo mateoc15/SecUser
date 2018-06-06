@@ -11,24 +11,42 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class UserServiceProvider {
   data: any;
-
+  url = 'http://api-rest-sec.herokuapp.com/';
   constructor(public http: HttpClient) {
     console.log('Hello UserServiceProvider Provider');
   }
 
   getMedicamentos(categoria: string) {
-    return this.http.get('http://api-rest-sec.herokuapp.com/m/medicamentos/'+categoria);
+    return this.http.get(this.url+'m/medicamentos/'+categoria);
   }
 
   getMedicamento(id: string) {
-    return this.http.get('http://api-rest-sec.herokuapp.com/m/medicamentos/id/'+id);
+    return this.http.get(this.url+'m/medicamentos/id/'+id);
   }
 
+  getMedicamentoNombreCat(nombre: string, categoria: string){
+    return this.http.get(this.url+'m/medicamentos/nombrecat/'+nombre+'/'+categoria);
+  }
+
+  getMedicamentoNombre(nombre: string){
+    return this.http.get(this.url+'m/medicamentos/nombre/'+nombre);
+  }
 
   solicitudDomicilio(data) {
     
   return new Promise((resolve, reject) => {
-    this.http.post('http://api-rest-sec.herokuapp.com/s/solicituddomicilio', data)
+    this.http.post(this.url+'s/solicituddomicilio', data)
+      .subscribe(res => {
+        resolve(res);
+      }, (err) => {
+        reject(err);
+      });
+  });
+}
+
+botonpayu(data){
+return new Promise((resolve, reject) => {
+this.http.post(' https://sandbox.api.payulatam.com/payments-api/4.0/service.cgi', data)
       .subscribe(res => {
         resolve(res);
       }, (err) => {

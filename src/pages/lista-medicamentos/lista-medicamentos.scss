@@ -1,3 +1,16 @@
 page-lista-medicamentos {
-
+    ion-col.my-thin-col {
+        flex: 0 0 4px;
+        padding: 0;
+        margin-top: 7px;
+    }
+    .textoprecio {
+        text-align: right;
+        align-items: right;
+        align-content: right;
+    }
+    .labelcantidad {
+        width: 10px;
+        min-block-size: 0%;
+    }
 }

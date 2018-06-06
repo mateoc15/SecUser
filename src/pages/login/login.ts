@@ -6,6 +6,7 @@ import { CambiarContraseña2Page } from '../cambiar-contraseña2/cambiar-contras
 import { RestProvider } from '../../providers/rest/rest';
 import { RegistroPage } from '../registro/registro';
 
+
 /**
  * Generated class for the LoginPage page.
  *
@@ -28,6 +29,7 @@ export class LoginPage {
     
     private log = {
         correo: '',
+        contraseña: '',
         contrasena: ''
     }
 
@@ -44,6 +46,7 @@ export class LoginPage {
   }
     
     login(){
+        /*
         var alert = this.alertCtrl.create({
             title: 'Lo Sentimos',
             subTitle: 'Tuvimos un problema de ultimo momento con esta parte...\t El Login redirige directamente a la Página Principal',
@@ -51,6 +54,8 @@ export class LoginPage {
         });
         alert.present();
         this.goMain();
+        */
+       
         /*
         if(!this.validate(this.log)){
             var alert = this.alertCtrl.create({
@@ -61,8 +66,10 @@ export class LoginPage {
             alert.present();
             return;
         }
-
+        */
+       this.log.contraseña=this.log.contrasena;
         this.restProvider.login(this.log).then((result) => {
+            
         this.next(result);
         console.log(result);
         
@@ -70,12 +77,13 @@ export class LoginPage {
             this.next(err);
         console.log(err);
         })
-        */
+        
     }
 
     next(result: any):void{
         switch(result.status){
             case 200: {
+                console.log(result+"resultado")
                 this.goMain();
                 break;
             }
@@ -105,6 +113,7 @@ export class LoginPage {
     }
 
     goRegistro():void{
+        /*
         var alert = this.alertCtrl.create({
             title: 'Lo Sentimos',
             subTitle: 'Presentamos un pequeño problema de ultima hora con esta parte',
@@ -112,7 +121,8 @@ export class LoginPage {
         });
         alert.present();
         return;
-        //this.navCtrl.push(RegistroPage);
+        */
+        this.navCtrl.push(RegistroPage);
     }
 
     goMain():void{

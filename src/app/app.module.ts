@@ -21,6 +21,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { RestProvider } from '../providers/rest/rest';
 import { UserServiceProvider } from '../providers/user-service/user-service';
 import { RegistroPageModule } from '../pages/registro/registro.module';
+import { PagoPage } from '../pages/pago/pago';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
+
 
 @NgModule({
   declarations: [
@@ -28,7 +31,8 @@ import { RegistroPageModule } from '../pages/registro/registro.module';
     HomePage,
     CompraPage,
     CarritoPage,
-    ListaMedicamentosPage
+    ListaMedicamentosPage,
+    PagoPage
   ],
 
   imports: [
@@ -48,7 +52,8 @@ import { RegistroPageModule } from '../pages/registro/registro.module';
     HomePage,
     CompraPage,
     CarritoPage,
-    ListaMedicamentosPage
+    ListaMedicamentosPage,
+    PagoPage
   ],
   providers: [
     StatusBar,
@@ -56,7 +61,7 @@ import { RegistroPageModule } from '../pages/registro/registro.module';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     UserServiceProvider,
-    UserServiceProvider
+    InAppBrowser
   ]
 })
 export class AppModule {}

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { RestProvider } from '../../providers/rest/rest';
+import { LoginPage } from '../login/login';
 
 /**
  * Generated class for the RegistroPage page.
@@ -16,12 +17,12 @@ import { RestProvider } from '../../providers/rest/rest';
 })
 export class RegistroPage {
 
-  private cliente = {
+  private usuario = {
     id_cliente: '',
-    id_tipo_documento: '',
-    correo: '',
+    tipo_documento: '',
     nombre: '',
-    fecha_de_nacimiento: '',
+    correo: '',
+    fecha_nacimiento: '',
     genero: ''
   }
 
@@ -38,8 +39,8 @@ console.log('ionViewDidLoad RegistroPage');
 
 register(){
 
-    this.cliente = this.completeDefault();
-    if(!this.validateComplete(this.cliente)){
+    this.usuario = this.completeDefault();
+    if(!this.validateComplete(this.usuario)){
       var alert = this.alertCtrl.create({
         title: 'Campos Vacios',
         subTitle: 'Por Favor LLenar Los Campos Faltantes',
@@ -48,7 +49,7 @@ register(){
       alert.present();
       return;
     }
-    this.restProvider.register(this.cliente).then((result) => {
+    this.restProvider.register(this.usuario).then((result) => {
         
       this.todoOk();
       console.log(result);
@@ -62,14 +63,14 @@ register(){
 
 
   completeDefault(): any{
-    var repartidorSend = this.cliente;
-    if(this.cliente.fecha_de_nacimiento==''){
-      repartidorSend.fecha_de_nacimiento='0001-01-01';
+    var repartidorSend = this.usuario;
+    if(this.usuario.fecha_nacimiento==''){
+      repartidorSend.fecha_nacimiento='0001-01-01';
     }
-    if(this.cliente.nombre==''){
+    if(this.usuario.nombre==''){
       repartidorSend.nombre='Default';
     }
-    if(this.cliente.genero==''){
+    if(this.usuario.genero==''){
       repartidorSend.genero='Default';
     }
     return repartidorSend;
@@ -106,19 +107,27 @@ register(){
 }
 
 todoOk(){
-    this.cliente = {
-      id_cliente: '',
-      id_tipo_documento: '',
-      correo: '',
-      nombre: '',
-      fecha_de_nacimiento: '',
-      genero: ''
-    }
+    
     var alert = this.alertCtrl.create({
       title: 'Todo OK',
-      subTitle: 'Se Ha Registrado El Empleado Correctamente',
-      buttons: ['0k']
+      subTitle: 'Se Ha Registrado El Empleado Correctamente /n La contraseña fue enviada al correo '+this.usuario.correo,
+      buttons: [
+        {
+          text: 'Ok',
+          role: 'ok',
+          handler: () => {
+            this.navCtrl.push(LoginPage);
+          }
+        }]
     });
+    this.usuario = {
+      id_cliente: '',
+      tipo_documento: '',
+      correo: '',
+      nombre: '',
+      fecha_nacimiento: '',
+      genero: ''
+    }
     alert.present();
   }
 

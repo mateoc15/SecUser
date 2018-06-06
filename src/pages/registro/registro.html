@@ -6,9 +6,9 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>registro</ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <ion-title>registro</ion-title>
+    </ion-navbar>
 
 </ion-header>
 
@@ -16,65 +16,51 @@
 <ion-content padding>
     <ion-card>
         <ion-card-content>
-                <ion-list no-lines>
-                        <form (ngSubmit)="register()">
-                            <ion-item>
-                                <ion-label floating >Tipo Documento</ion-label>
-                                <ion-select [(ngModel)]="usuario.id_tipo_documento" 
-                                name='id_tipo_documento'>
-                                  <ion-option value="C.C">C.C</ion-option>
-                                  <ion-option value="C.E">C.E</ion-option>
-                                </ion-select>
-                              </ion-item>
-                              <ion-item>
-                                <ion-label floating>Número De Documento</ion-label>
-                                <ion-input  type='number' 
-                                            [(ngModel)]="usuario.id_usuario"
-                                            name='id_administrador'></ion-input>
-                              </ion-item>
-                              <ion-item>
-                                <ion-label floating>Correo</ion-label>
-                                <ion-input type="email"
-                                            [(ngModel)]="usuario.correo"
-                                            name='correo' ></ion-input>
-                              </ion-item>
-                              <ion-item>
-                                <ion-label floating >Nombre</ion-label>
-                                <ion-input type="text"
-                                            [(ngModel)]="usuario.nombre"
-                                            name="nombre" ></ion-input>
-                              </ion-item>
-                              <ion-item>
-                                  <ion-label floating>Fecha De Nacimiento</ion-label>
-                                  <ion-datetime displayFormat="MM/DD/YYYY" 
-                                                pickerFormat="MM/DD/YYYY" 
-                                                #date 
-                                                name="fecha_de_nacimiento" 
-                                                [(ngModel)]="usuario.fecha_de_nacimiento">
-                                  </ion-datetime>
-                                </ion-item>
-                
-                                <ion-item>
-                                    <ion-label floating >horarios</ion-label>
-                                    <ion-select [(ngModel)]="usuario.genero" 
-                                    name='genero'>
-                                      <ion-option value="Masculino">Masculino</ion-option>
-                                      <ion-option value="Femenino">Femenino</ion-option>
-                                    </ion-select>
-                                  </ion-item>
-                
-                                <ion-item>
-                                  <button ion-button 
-                                          type="submit"
-                                          round block>
-                                          Registrarme
-                                  </button>
-                                </ion-item>
-                              
-                    
-                        </form>
-                      </ion-list>
+            <ion-list no-lines>
+                <form (ngSubmit)="register()">
+                    <ion-item>
+                        <ion-label floating>Tipo Documento</ion-label>
+                        <ion-select [(ngModel)]="usuario.tipo_documento" name='id_tipo_documento'>
+                            <ion-option value="C.C">C.C</ion-option>
+                            <ion-option value="C.E">C.E</ion-option>
+                        </ion-select>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label floating>Número De Documento</ion-label>
+                        <ion-input type='number' [(ngModel)]="usuario.id_cliente" name='id_administrador'></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label floating>Correo</ion-label>
+                        <ion-input type="email" [(ngModel)]="usuario.correo" name='correo'></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label floating>Nombre</ion-label>
+                        <ion-input type="text" [(ngModel)]="usuario.nombre" name="nombre"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label floating>Fecha De Nacimiento</ion-label>
+                        <ion-datetime displayFormat="MM/DD/YYYY" pickerFormat="MM/DD/YYYY" #date name="fecha_nacimiento" [(ngModel)]="usuario.fecha_de_nacimiento">
+                        </ion-datetime>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label floating>Genero</ion-label>
+                        <ion-select [(ngModel)]="usuario.genero" name='genero'>
+                            <ion-option value="Masculino">Masculino</ion-option>
+                            <ion-option value="Femenino">Femenino</ion-option>
+                        </ion-select>
+                    </ion-item>
+
+                    <ion-item>
+                        <button ion-button type="submit" round block>
+                                        Registrarme
+                                </button>
+                    </ion-item>
+
+
+                </form>
+            </ion-list>
         </ion-card-content>
     </ion-card>
-    
+
 </ion-content>

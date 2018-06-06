@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Observable } from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
 import { ListaMedicamentosPage } from '../lista-medicamentos/lista-medicamentos';
+import { UserServiceProvider } from '../../providers/user-service/user-service';
 
 
 /**
@@ -18,16 +19,14 @@ import { ListaMedicamentosPage } from '../lista-medicamentos/lista-medicamentos'
   templateUrl: 'compra.html',
 })
 export class CompraPage {
-  categorias: Observable <any>;
-  posts: any;
+  medicamentos: Object;
+  medicamentosCat: Object;
+  @ViewChild('busquedaMedicamentoNom', {read: ElementRef}) busquedaMedicamentoRef: ElementRef;
+  busquedaMedicamentoElement: HTMLInputElement=null;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public httpClient: HttpClient) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public httpClient: HttpClient, public userServiceProvider: UserServiceProvider ) {
 
-    this.categorias = this.httpClient.get('https://swapi.co/api/people');
-    this.categorias
-    .subscribe(data => {
-      console.log('my data: ', data);
-    })
+    
   }
 
   ionViewDidLoad() {
@@ -35,7 +34,21 @@ export class CompraPage {
   }
 
   listarMedicamentosCategoria(categoria: string) {
-  this.navCtrl.push(ListaMedicamentosPage, categoria);
+  this.navCtrl.push(ListaMedicamentosPage, {
+    param1: categoria, param2: 'false'
+  });
+}
+
+public buscaMedicamento(text: any){
+  this.busquedaMedicamentoElement =this.busquedaMedicamentoRef.nativeElement.querySelector('.searchbar-input');
+  console.log(JSON.stringify(this.busquedaMedicamentoElement.value));
+  if(this.busquedaMedicamentoElement.value != ""){
+    this.navCtrl.push(ListaMedicamentosPage,{
+      param1: 'false', param2: this.busquedaMedicamentoElement.value
+    });
+  }else{
+    
+  }
 }
 
 }

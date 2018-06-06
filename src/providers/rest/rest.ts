@@ -58,6 +58,7 @@ export class RestProvider {
           resolve(res);
         }, (err) => {
           reject(err);
+          console.log("algo va mal")
         });
     });
   }
